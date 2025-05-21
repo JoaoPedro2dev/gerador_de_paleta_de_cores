@@ -12,59 +12,70 @@
     <title>Gerador de palhetas</title>
   </head>
   <body>
-    <section id="preferences">
-      <div id="inputBox">
-        <input type="color" id="colorBox" />
-        <input type="text" value="#fff" id="colorInput" />
-        <button>
-          <i class="bi bi-caret-right-fill"></i>
-        </button>
-      </div>
+    <div class="container">
+      <section id="preferences">
+        <label for="colorInput" id="inputBox">
+          <div id="colorBox">
+            <label for="colorBoxInput"></label>
+            <input type="color" id="colorBoxInput" />
+          </div>
+          <input type="text" value="#fff" id="colorInput" />
+          <button>
+            <i class="bi bi-caret-right-fill"></i>
+          </button>
+        </label>
 
-      <div id="configs">
-        <div class="configChoosing">
-          <input type="radio" id="palettInputChoosing" />
-          <p>Palhetas</p>
+        <div id="configs">
+          <div class="configChoosing">
+            <input type="radio" id="palettInputChoosing" />
+            <label for="palettInputChoosing">PALETAS</p>
+          </div>
+
+          <div class="configChoosing">
+            <input type="radio" id="degradeInputChoosing" />
+            <label for="degradeInputChoosing">DEGRADE UNICO</label>
+          </div>
         </div>
 
-        <div class="configChoosing">
-          <input type="radio" id="degradeInputChoosing" />
-          <p>Degrade único</p>
+        <div id="saturationConfig">
+          <label for="saturationConfig">Saturação</label>
+          <input type="range" id="saturationInput" />
         </div>
-      </div>
+      </section>
 
-      <div id="saturationConfig">
-        <label for="saturationConfig">Saturação</label>
-        <input type="range" id="saturationInput" />
-      </div>
-    </section>
+      <section id="result">
+        <div id="paletteBox">
+          <div class="color">
+            <input type="text" class="inputColorSolitary" value="#fff" />
+            <button class="copyButton">Copiar</button>
+          </div>
 
-    <section id="result">
-      <div id="paletteBox">
-        <div class="color">
-          <input type="text" class="inputColorSolitary" value="#fff" />
-          <button class="copyButton">Copiar</button>
+          <div class="color dois">
+            <input type="text" class="inputColorSolitary" value="#fff" />
+            <button class="copyButton">Copiar</button>
+          </div>
+
+          <div class="color">
+            <input type="text" class="inputColorSolitary" value="#fff" />
+            <button class="copyButton">Copiar</button>
+          </div>
+
+           <div class="color dois">
+            <input type="text" class="inputColorSolitary" value="#fff" />
+            <button class="copyButton">Copiar</button>
+          </div>
         </div>
 
-        <div class="color">
-          <input type="text" class="inputColorSolitary" value="#fff" />
-          <button class="copyButton">Copiar</button>
+        <div id="imgExemple">
+          <img src="./image/teste.png" alt="" id="boardExample" />
+          <img src="./image/teste.png" alt="" id="appExemple" />
         </div>
+      </section>
 
-        <div class="color">
-          <input type="text" class="inputColorSolitary" value="#fff" />
-          <button class="copyButton">Copiar</button>
-        </div>
-      </div>
-      <div id="">
-        <img src="" alt="" id="boardExample" />
-        <img src="" alt="" id="appExemple" />
-      </div>
-    </section>
-
-    <section id="secondExample">
-      <img src="" alt="" id="blurredExample" />
-      <img src="" alt="" id="landscape" />
-    </section>
+      <section id="secondExample">
+        <img src="./image/teste.png" alt="" id="blurredExample" />
+        <img src="./image/teste.png" alt="" id="landscape" />
+      </section>
+    </div>
   </body>
 </html>
