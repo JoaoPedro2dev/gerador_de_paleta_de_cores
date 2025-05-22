@@ -1,7 +1,21 @@
 const colorPalette = document.querySelectorAll(".color");
 
 document.querySelector("#colorInput").addEventListener("input", (e) => {
-  changeColor(e);
+  teste(e);
+});
+
+document.querySelector("#colorBoxInput").addEventListener("change", (e) => {
+  teste(e);
+  document.querySelector("label[for='colorBoxInput']").style.backgroundColor =
+    e.target.value;
+});
+
+const inputSecondaryArray = document.querySelectorAll(".inputColorSecondary");
+
+inputSecondaryArray.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    input.closest(".color").style.backgroundColor = e.target.value;
+  });
 });
 
 function toRgb(hex) {
@@ -27,19 +41,28 @@ function toHex(r, g, b) {
   );
 }
 
-function changeColor(e) {
-  value = e.target.value;
+function createDegrade(e) {
+  baseRgb = toRgb(e.target.value);
+  const white = { r: 255, g: 255, b: 255 };
+  let degrade = [];
 
-  let color = [];
+  for (let i = 0; i < 4; i++) {
+    const percent = i / 4;
+    const r = Math.round(baseRgb.r + (white.r - baseRgb.r) * percent);
+    const g = Math.round(baseRgb.g + (white.g - baseRgb.g) * percent);
+    const b = Math.round(baseRgb.b + (white.b - baseRgb.b) * percent);
 
-  const colorBase = value;
+    degrade.push(toHex(r, g, b));
+  }
 
-  colorPalette.forEach((card) => {
-    card.style.backgroundColor = value;
-  });
-
-  console.log(value);
+  return degrade;
 }
 
-// console.log("RGB " + toRgb("#f2f2f2"));
-console.log("HEX " + toHex(242, 242, 242));
+function teste(e) {
+  const colortoadd = createDegrade(e);
+
+  colorPalette.forEach((card, i) => {
+    card.style.backgroundColor = colortoadd[i];
+    card.querySelector("input").value = colortoadd[i];
+  });
+}
