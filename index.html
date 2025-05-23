@@ -17,23 +17,23 @@
         <label for="colorInput" id="inputBox">
           <div id="colorBox">
             <label for="colorBoxInput"></label>
-            <input type="color" id="colorBoxInput" />
+            <input type="color" value="#006ed6" id="colorBoxInput" />
           </div>
-          <input type="text" value="#fff" id="colorInput" />
-          <button>
+          <input type="text" value="#006ed6" id="colorInput" />
+          <!-- <button id="enterBtn">
             <i class="bi bi-caret-right-fill"></i>
-          </button>
+          </button> -->
         </label>
 
         <div id="configs">
-          <div class="configChoosing">
+          <!-- <div class="configChoosing">
             <input type="radio" id="palettInputChoosing" />
             <label for="palettInputChoosing">PALETAS</p>
-          </div>
+          </div> -->
 
           <div class="configChoosing">
             <input type="radio" id="degradeInputChoosing" />
-            <label for="degradeInputChoosing">DEGRADE UNICO</label>
+            <label for="degradeInputChoosing">DEGRADE ÚNICO</label>
           </div>
         </div>
 
@@ -46,23 +46,33 @@
       <section id="result">
         <div id="paletteBox">
           <div class="color">
-            <input type="text" class="inputColorSecondary" value="#fff" />
+            <input type="text" class="inputColorSecondary" value="#006ed6" />
             <button class="copyButton">Copiar</button>
           </div>
 
           <div class="color dois">
-            <input type="text" class="inputColorSecondary" value="#fff" />
+            <input type="text" class="inputColorSecondary" value="#4092e0" />
             <button class="copyButton">Copiar</button>
           </div>
 
-          <div class="color">
-            <input type="text" class="inputColorSecondary" value="#fff" />
+          <div class="color tres">
+            <input type="text" class="inputColorSecondary" value="#80b7eb" />
             <button class="copyButton">Copiar</button>
           </div>
 
-           <div class="color dois">
-            <input type="text" class="inputColorSecondary" value="#fff" />
+          <div class="color quatro">
+            <input type="text" class="inputColorSecondary" value="#bfdbf5" />
             <button class="copyButton">Copiar</button>
+          </div>
+
+          <div class="linearBox">
+            <input
+              type="text"
+              id="linearInput"
+              value="#006ed6, #4092e0, #80b7eb, #bfdbf5"
+              readonly
+            />
+            <button id="copyLinearBtn" class="copyButton">Copiar</button>
           </div>
         </div>
 
