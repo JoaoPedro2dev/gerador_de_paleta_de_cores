@@ -1,14 +1,3 @@
-function toRgb(hex) {
-  hex = hex.replace("#", "");
-  const rgbNum = parseInt(hex, 16);
-
-  return {
-    r: (rgbNum >> 16) & 255,
-    g: (rgbNum >> 8) & 255,
-    b: rgbNum & 255,
-  };
-}
-
 function toHex(r, g, b) {
   return (
     "#" +
@@ -19,6 +8,17 @@ function toHex(r, g, b) {
       })
       .join("")
   );
+}
+
+function toRgb(hex) {
+  hex = hex.replace("#", "");
+  const rgbNum = parseInt(hex, 16);
+
+  return {
+    r: (rgbNum >> 16) & 255,
+    g: (rgbNum >> 8) & 255,
+    b: rgbNum & 255,
+  };
 }
 
 function createPalette(inputValue) {
@@ -46,6 +46,11 @@ function addPallet(inputValue) {
     card.style.backgroundColor = colorArray[i];
     card.querySelector("input").value = colorArray[i];
   });
+
+  createFrame(...colorArray);
+  createWeb(...colorArray);
+  createSpiral(...colorArray);
+  createLandscape(...colorArray);
 }
 
 const linearBox = document.querySelector(".linearBox");
@@ -75,6 +80,65 @@ function copyText(btn) {
     console.log("Copiado");
   }
 }
+
+//CANVAS JavaScript
+
+function createFrame(c1, c2, c3, c4) {
+  const ctx = document.querySelector("#quadro").getContext("2d");
+  ctx.clearRect(0, 0, 300, 300);
+  ctx.fillStyle = c1;
+  ctx.fillRect(0, 0, 300, 300);
+  ctx.fillStyle = c2;
+  ctx.beginPath();
+  ctx.arc(150, 150, 80, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = c3;
+  ctx.fillRect(120, 120, 60, 60);
+
+  console.log(c4);
+}
+
+function createWeb(c1, c2, c3, c4) {
+  const ctx = document.querySelector("#web").getContext("2d");
+  ctx.clearRect(0, 0, 300, 300);
+  ctx.fillStyle = c1;
+  ctx.fillRect(0, 0, 300, 60);
+  ctx.fillStyle = c2;
+  ctx.fillRect(20, 80, 260, 40);
+  ctx.fillStyle = c3;
+  ctx.fillRect(20, 140, 120, 120);
+  ctx.fillRect(160, 140, 120, 120);
+}
+
+function createSpiral(c1, c2, c3, c4) {
+  const ctx = document.querySelector("#spiral").getContext("2d");
+  const grad = ctx.createRadialGradient(200, 100, 10, 200, 100, 200);
+  grad.addColorStop(0, c1);
+  grad.addColorStop(0.5, c2);
+  grad.addColorStop(1, c3);
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, 400, 200);
+}
+
+function createLandscape(c1, c2, c3, c4) {
+  const ctx = document.querySelector("#landscape").getContext("2d");
+  ctx.clearRect(0, 0, 400, 700);
+  ctx.fillStyle = c3; // céu
+  ctx.fillRect(0, 0, 400, 500);
+  ctx.fillStyle = c2; // Montanha
+  ctx.beginPath();
+  ctx.moveTo(0, 200);
+  ctx.lineTo(100, 80);
+  ctx.lineTo(200, 200);
+  ctx.fill();
+  ctx.fillStyle = c1; //Chão
+  ctx.fillRect(0, 140, 800, 200);
+}
+
+createFrame("#006ed6", "#4092e0", "#80b7eb", "#ccc");
+createWeb("#006ed6", "#4092e0", "#80b7eb", "#ccc");
+createSpiral("#006ed6", "#4092e0", "#80b7eb", "#ccc");
+createLandscape("#006ed6", "#4092e0", "#80b7eb", "#ccc");
 
 const colorInput = document.querySelector("#colorInput");
 colorInput.addEventListener("input", (e) => {

@@ -238,7 +238,7 @@ input:checked + label {
   margin-top: 30px;
 }
 
-#imgExemple > img {
+canvas {
   max-width: 290px;
   height: 190px;
   border-radius: 15px;
@@ -254,7 +254,7 @@ input:checked + label {
   height: 190px;
 }
 
-#secondExample > img:last-child {
+#secondExample > canvas:last-child {
   margin-top: 30px;
   height: 267px;
 }
