@@ -107,20 +107,15 @@ linearInput.addEventListener("click", (e) => {
   if (lastChecked === e.target) {
     linearInput.checked = false;
     lastChecked = null;
-    linear();
-
     colorInput.removeEventListener("input", linear);
     colorBoxInput.removeEventListener("change", linear);
     linearBox.style.display = "none";
   } else {
     lastChecked = e.target;
-
     colorInput.addEventListener("input", linear);
-
     colorBoxInput.addEventListener("change", linear);
-
-    linear();
     linearBox.style.display = "flex";
+    linear();
   }
 });
 

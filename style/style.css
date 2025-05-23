@@ -201,10 +201,6 @@ input:checked + label {
   border-color: green;
 }
 
-#paletteBox > .color > button:hover {
-  background-color: #ccc;
-}
-
 #paletteBox > .color:hover {
   width: 350px;
 }
