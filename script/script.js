@@ -53,7 +53,7 @@ function createPalette(inputValue) {
 }
 
 const colorPalette = document.querySelectorAll(".color");
-function addPallet(inputValue) {
+function addPalette(inputValue) {
   const colorArray = createPalette(inputValue);
 
   colorPalette.forEach((card, i) => {
@@ -63,6 +63,7 @@ function addPallet(inputValue) {
 
   createImages(colorArray);
   setColors(...colorArray);
+  linear();
 }
 
 const linearBox = document.querySelector(".linearBox");
@@ -178,13 +179,12 @@ const enterBtn = document.querySelector("#enterBtn");
 const colorInput = document.querySelector("#colorInput");
 
 enterBtn.addEventListener("click", () => {
-  addPallet(colorInput.value);
+  addPalette(colorInput.value);
 });
 
 const colorBoxInput = document.querySelector("#colorBoxInput");
 colorBoxInput.addEventListener("change", (e) => {
-  addPallet(e.target.value);
-
+  addPalette(e.target.value);
   colorInput.value = e.target.value;
 });
 
