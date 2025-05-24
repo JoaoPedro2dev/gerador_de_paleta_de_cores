@@ -5,6 +5,12 @@ function createImages(array) {
 }
 createImages(["#006ed6", "#4092e0", "#80b7eb", "#ccc"]);
 
+const setColors = (color1, color2, color3) => {
+  document.documentElement.style.setProperty("--cor-primaria", color1);
+  document.documentElement.style.setProperty("--cor-secundaria", color2);
+  document.documentElement.style.setProperty("--cor-terciaria", color3);
+};
+
 function toHex(r, g, b) {
   return (
     "#" +
@@ -58,6 +64,7 @@ function addPallet(inputValue) {
   });
 
   createImages(colorArray);
+  setColors(...colorArray);
 }
 
 const linearBox = document.querySelector(".linearBox");

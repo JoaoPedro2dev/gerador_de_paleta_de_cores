@@ -1,3 +1,9 @@
+:root {
+  --cor-primaria: #006ed6;
+  --cor-secundaria: #4092e0;
+  --cor-terciaria: #80b7eb;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -24,7 +30,7 @@ body {
 }
 
 #preferences > #inputBox {
-  border: 2px solid #006ed6;
+  border: 2px solid var(--cor-primaria);
   border-radius: 15px;
   padding: 15px 20px;
 
@@ -34,14 +40,14 @@ body {
   gap: 15px;
 }
 
-#preferences > #inputBox > #colorBox {
+/* #preferences > #inputBox > #colorBox {
   height: 40px;
-}
+} */
 
 #preferences > #inputBox > #colorBox > label {
   border-radius: 5px;
   display: inline-block;
-  background-color: #006ed6;
+  background-color: var(--cor-primaria);
   height: 40px;
   width: 40px;
 }
@@ -54,7 +60,7 @@ body {
   background-color: transparent;
   border: none;
   outline: none;
-  color: #fff;
+  color: var(--cor-primaria);
   font-size: large;
   width: 110px;
   font-weight: bold;
@@ -62,24 +68,28 @@ body {
   text-align: center;
 }
 
+#preferences > #inputBox > #colorInput:focus #preferences > #inputBox {
+  color: var(--cor-secundaria);
+}
+
 #preferences > #inputBox > button {
   padding: 0px;
   border: none;
   font-size: 30px;
   background-color: transparent;
-  color: #006ed6;
+  color: var(--cor-primaria);
   cursor: pointer;
   transition: 0.2s;
 }
 
 #preferences > #inputBox > button:hover {
-  color: #4092e0;
+  color: var(--cor-secundaria);
 }
 
 #configs {
   margin-top: 30px;
   padding: 0px;
-  background-color: #006ed6;
+  background-color: var(--cor-primaria);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -99,7 +109,6 @@ body {
   font-size: medium;
   transition: 0.2s;
   cursor: pointer;
-  text-align: center;
 }
 
 #configs .configChoosing > input {
@@ -107,7 +116,7 @@ body {
 }
 
 input:checked + label {
-  background-color: #80b7eb;
+  background-color: var(--cor-secundaria);
 }
 
 #paletteBox {
@@ -157,7 +166,7 @@ input:checked + label {
 }
 
 #paletteBox > .color > input {
-  border: 1px solid #030119;
+  border: 2px solid var(--cor-primaria);
   padding: 8px 15px;
   font-size: medium;
 }
@@ -188,7 +197,7 @@ input:checked + label {
 }
 
 #paletteBox > .color:hover + .color:not(hover) {
-  width: calc((100% - 300px) / 3);
+  width: calc((100% - 350px) / 5);
 }
 
 #paletteBox > .linearBox:hover #linearInput,
