@@ -16,7 +16,6 @@ body {
 
   display: flex;
   align-items: center;
-  /* justify-content: center; */
 
   max-width: 100vw;
   height: 100vh;
@@ -93,7 +92,6 @@ body {
 
 #configs .configChoosing {
   display: flex;
-  /* justify-content: center; */
 }
 
 #configs .configChoosing > label {
@@ -234,12 +232,6 @@ canvas {
   height: 190px;
   border-radius: 15px;
 }
-
-/* #secondExample > img {
-  width: 100%;
-  border-radius: 15px;
-  height: 190px;
-} */
 
 #secondExample > canvas:last-child {
   height: 267px;
