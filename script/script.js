@@ -186,23 +186,19 @@ function createSpiral(c1, c2, c3, c4, c5, c6) {
 
   ctx.putImageData(imageData, 0, 0);
 }
-
 //FIM CANVAS
 
+const enterBtn = document.querySelector("#enterBtn");
 const colorInput = document.querySelector("#colorInput");
-colorInput.addEventListener("input", (e) => {
-  addPallet(e.target.value);
+
+enterBtn.addEventListener("click", () => {
+  addPallet(colorInput.value);
 });
 
 const colorBoxInput = document.querySelector("#colorBoxInput");
 colorBoxInput.addEventListener("change", (e) => {
   addPallet(e.target.value);
 
-  const colorBoxInputLabel = document.querySelector(
-    "label[for='colorBoxInput']"
-  );
-
-  colorBoxInputLabel.style.backgroundColor = e.target.value;
   colorInput.value = e.target.value;
 });
 
