@@ -63,7 +63,6 @@ function addPalette(inputValue) {
 
   createImages(colorArray);
   setColors(...colorArray);
-  linear();
 }
 
 const linearBox = document.querySelector(".linearBox");
@@ -206,12 +205,12 @@ linearInput.addEventListener("click", (e) => {
   if (lastChecked === e.target) {
     linearInput.checked = false;
     lastChecked = null;
-    colorInput.removeEventListener("input", linear);
+    enterBtn.removeEventListener("click", linear);
     colorBoxInput.removeEventListener("change", linear);
     linearBox.style.display = "none";
   } else {
     lastChecked = e.target;
-    colorInput.addEventListener("input", linear);
+    enterBtn.addEventListener("click", linear);
     colorBoxInput.addEventListener("change", linear);
     linearBox.style.display = "flex";
     linear();
