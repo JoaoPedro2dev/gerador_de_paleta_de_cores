@@ -40,10 +40,6 @@ body {
   gap: 15px;
 }
 
-/* #preferences > #inputBox > #colorBox {
-  height: 40px;
-} */
-
 #preferences > #inputBox > #colorBox > label {
   border-radius: 5px;
   display: inline-block;
@@ -191,13 +187,13 @@ input:checked + label {
   width: 350px;
 }
 
+#paletteBox > .color:hover + .color:not(hover) {
+  width: calc((100% - 350px) / 5);
+}
+
 #paletteBox > .color:hover input,
 #paletteBox > .color:hover button {
   display: block;
-}
-
-#paletteBox > .color:hover + .color:not(hover) {
-  width: calc((100% - 350px) / 5);
 }
 
 #paletteBox > .linearBox:hover #linearInput,
@@ -239,13 +235,62 @@ canvas {
   border-radius: 15px;
 }
 
-#secondExample > img {
+/* #secondExample > img {
   width: 100%;
   border-radius: 15px;
   height: 190px;
-}
+} */
 
 #secondExample > canvas:last-child {
-  margin-top: 30px;
   height: 267px;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    display: block;
+    padding: 40px 20px;
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  section {
+    min-width: 100%;
+  }
+
+  #preferences > #inputBox {
+    justify-content: space-between;
+  }
+
+  #paletteBox > .color {
+    padding: 0px 0px;
+  }
+
+  #paletteBox > .color > input,
+  #paletteBox > .color > button {
+    width: 90%;
+  }
+
+  #paletteBox > .color:hover {
+    min-width: 100px;
+  }
+
+  #paletteBox > .color:hover + .color:not(hover) {
+    width: calc((100% - 350px) / 5);
+  }
+
+  #imgExemple {
+    display: flex;
+    flex-direction: column;
+  }
+
+  canvas {
+    width: 100%;
+  }
+
+  canvas:last-child {
+    margin-bottom: 40px;
+  }
 }
