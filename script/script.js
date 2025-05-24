@@ -3,7 +3,7 @@ function createImages(array) {
 
   functions.forEach((fn) => fn(...array));
 }
-createImages(["#006ed6", "#4092e0", "#80b7eb", "#ccc"]);
+createImages(["#006ed6", "#4092e0", "#80b7eb", "#ccc", "#80b7eb", "#bfdbf5  "]);
 
 const setColors = (color1, color2, color3) => {
   document.documentElement.style.setProperty("--cor-primaria", color1);
@@ -95,30 +95,99 @@ function copyText(btn) {
   }
 }
 
-function createFrame(c1, c2, c3, c4) {
+//CANVAS
+function createFrame(c1, c2, c3, c4, c5, c6) {
   const ctx = document.querySelector("#quadro").getContext("2d");
   ctx.clearRect(0, 0, 300, 300);
-  ctx.fillStyle = c1;
-  ctx.fillRect(0, 0, 300, 300);
-  ctx.fillStyle = c2;
-  ctx.beginPath();
-  ctx.arc(150, 150, 80, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.fillStyle = c3;
-  ctx.fillRect(120, 120, 60, 60);
 
-  console.log(c4);
-}
-
-function createSpiral(c1, c2, c3, c4) {
-  const ctx = document.querySelector("#spiral").getContext("2d");
-  const grad = ctx.createRadialGradient(200, 100, 10, 200, 100, 200);
+  // Fundo com padrão de gradiente linear
+  const grad = ctx.createLinearGradient(0, 0, 300, 300);
   grad.addColorStop(0, c1);
   grad.addColorStop(0.5, c2);
   grad.addColorStop(1, c3);
   ctx.fillStyle = grad;
-  ctx.fillRect(0, 0, 400, 200);
+  ctx.fillRect(0, 0, 300, 300);
+
+  // Círculo central com sombra e cor forte
+  ctx.save();
+  ctx.shadowColor = c4;
+  ctx.shadowBlur = 20;
+  ctx.fillStyle = c4;
+  ctx.beginPath();
+  ctx.arc(150, 150, 70, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // Quadrado rotacionado com cor de destaque
+  ctx.save();
+  ctx.translate(150, 150);
+  ctx.rotate(Math.PI / 4); // 45 graus
+  ctx.fillStyle = c5;
+  ctx.fillRect(-40, -40, 80, 80);
+  ctx.restore();
+
+  // Bordas decorativas com cor final
+  ctx.strokeStyle = c6;
+  ctx.lineWidth = 6;
+  ctx.strokeRect(10, 10, 280, 280);
 }
+
+function lerpColor(colorA, colorB, t) {
+  return {
+    r: Math.round(colorA.r + (colorB.r - colorA.r) * t),
+    g: Math.round(colorA.g + (colorB.g - colorA.g) * t),
+    b: Math.round(colorA.b + (colorB.b - colorA.b) * t),
+  };
+}
+
+function createSpiral(c1, c2, c3, c4, c5, c6) {
+  const canvas = document.querySelector("#spiral");
+  const ctx = canvas.getContext("2d");
+  const width = canvas.width;
+  const height = canvas.height;
+  const imageData = ctx.createImageData(width, height);
+  const data = imageData.data;
+
+  // Converter as cores hex para RGB
+  const color1 = toRgb(c1);
+  const color2 = toRgb(c2);
+  const color3 = toRgb(c3);
+  const color4 = toRgb(c4);
+
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const dx = x - width / 2;
+      const dy = y - height / 2;
+      const radius =
+        Math.sqrt(dx * dx + dy * dy) / (Math.min(width, height) / 2); // normalizado [0,1]
+      let angle = Math.atan2(dy, dx);
+
+      // Normalizar ângulo para [0, 1]
+      let angleNorm = angle / (2 * Math.PI) + 0.5;
+
+      // Interpolar cor com base no raio entre color1 e color2
+      const colorRadius = lerpColor(color1, color2, radius);
+
+      // Interpolar cor com base no ângulo entre color3 e color4
+      const colorAngle = lerpColor(color3, color4, angleNorm);
+
+      // Misturar as duas interpolação (média simples)
+      const r = Math.round((colorRadius.r + colorAngle.r) / 2);
+      const g = Math.round((colorRadius.g + colorAngle.g) / 2);
+      const b = Math.round((colorRadius.b + colorAngle.b) / 2);
+
+      const index = (y * width + x) * 4;
+      data[index] = r;
+      data[index + 1] = g;
+      data[index + 2] = b;
+      data[index + 3] = 255;
+    }
+  }
+
+  ctx.putImageData(imageData, 0, 0);
+}
+
+//FIM CANVAS
 
 const colorInput = document.querySelector("#colorInput");
 colorInput.addEventListener("input", (e) => {
