@@ -10,10 +10,11 @@ body {
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
 
   max-width: 100vw;
   height: 100vh;
+  padding: 0px 11%;
 }
 
 .container {
@@ -23,7 +24,7 @@ body {
 }
 
 #preferences > #inputBox {
-  border: 2px solid #fff;
+  border: 2px solid #006ed6;
   border-radius: 15px;
   padding: 15px 20px;
 
@@ -67,14 +68,19 @@ body {
   font-size: 30px;
   background-color: transparent;
   color: #006ed6;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-#configs,
-#saturationConfig {
+#preferences > #inputBox > button:hover {
+  color: #4092e0;
+}
+
+#configs {
   margin-top: 30px;
-  padding: 15px;
-  background-color: #58036f;
-  border-radius: 15px;
+  padding: 0px;
+  background-color: #006ed6;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -86,13 +92,14 @@ body {
 
 #configs .configChoosing > label {
   width: 100%;
-  padding: 15px;
+  padding: 22px;
   border-radius: 10px;
   color: #fff;
   font-weight: bold;
   font-size: medium;
   transition: 0.2s;
   cursor: pointer;
+  text-align: center;
 }
 
 #configs .configChoosing > input {
@@ -100,45 +107,14 @@ body {
 }
 
 input:checked + label {
-  background-color: #cf23ff;
+  background-color: #80b7eb;
 }
-
-#saturationConfig {
-  padding: 30px;
-  gap: 20px;
-}
-
-#saturationConfig > label {
-  color: #fff;
-  font-size: large;
-  font-weight: bold;
-}
-
-/* #saturationConfig > input {
-  -webkit-appearance: none;
-  background: transparent;
-}
-
-#saturationConfig > input::-webkit-slider-runnable-track {
-  background-color: #d22fff;
-  border-radius: 10px;
-  height: 8px;
-}
-
-#saturationConfig > input::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  background-color: #c51af4;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  margin-top: -6px;
-} */
 
 #paletteBox {
   display: flex;
   border-radius: 10px;
   overflow: hidden;
-  width: 600px;
+  width: 100%;
 }
 
 .color,
@@ -158,6 +134,7 @@ input:checked + label {
   transition: all 0.2s ease;
   overflow: hidden;
 }
+
 #paletteBox > .linearBox {
   min-width: 100%;
   min-height: 100%;
@@ -220,32 +197,37 @@ input:checked + label {
 }
 
 #paletteBox > .dois {
-  background-color: #4092e0;
+  background-color: #2b86dd;
 }
 
 #paletteBox > .tres {
-  background-color: #80b7eb;
+  background-color: #559ee4;
 }
 
 #paletteBox > .quatro {
-  background-color: #bfdbf5;
+  background-color: #80b7eb;
+}
+
+#paletteBox > .cinco {
+  background-color: #aacff1;
+}
+
+#paletteBox > .seis {
+  background-color: #d5e7f8;
 }
 
 #imgExemple {
   width: 100%;
   display: flex;
+  gap: 25px;
   justify-content: space-between;
   margin-top: 30px;
 }
 
 canvas {
-  max-width: 290px;
+  width: 50%;
   height: 190px;
   border-radius: 15px;
-}
-
-#secondExample {
-  width: 350px;
 }
 
 #secondExample > img {

@@ -20,9 +20,9 @@
             <input type="color" value="#006ed6" id="colorBoxInput" />
           </div>
           <input type="text" value="#006ed6" id="colorInput" />
-          <!-- <button id="enterBtn">
-            <i class="bi bi-caret-right-fill"></i>
-          </button> -->
+          <button id="enterBtn">
+            <i class="bi bi-caret-right"></i>
+          </button>
         </label>
 
         <div id="configs">
@@ -37,10 +37,10 @@
           </div>
         </div>
 
-        <div id="saturationConfig">
+        <!-- <div id="saturationConfig">
           <label for="saturationInput">Saturação</label>
           <input type="range" id="saturationInput" />
-        </div>
+        </div> -->
       </section>
 
       <section id="result">
@@ -61,6 +61,16 @@
           </div>
 
           <div class="color quatro">
+            <input type="text" class="inputColorSecondary" value="#80b7eb" />
+            <button class="copyButton">Copiar</button>
+          </div>
+
+          <div class="color cinco">
+            <input type="text" class="inputColorSecondary" value="#80b7eb" />
+            <button class="copyButton">Copiar</button>
+          </div>
+
+          <div class="color seis">
             <input type="text" class="inputColorSecondary" value="#bfdbf5" />
             <button class="copyButton">Copiar</button>
           </div>
@@ -78,13 +88,8 @@
 
         <div id="imgExemple">
           <canvas id="quadro"></canvas>
-          <canvas id="web"></canvas>
+          <canvas id="spiral"></canvas>
         </div>
-      </section>
-
-      <section id="secondExample">
-        <canvas id="spiral"></canvas>
-        <canvas id="landscape"></canvas>
       </section>
     </div>
   </body>
